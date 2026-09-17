@@ -15,6 +15,7 @@
 | 行程 | 日期 | 目的地与路线 | 网页 |
 |---|---|---|---|
 | 新西兰南岛行程 | 11 月 27 日–12 月 5 日，共 9 天 | 皇后镇 → 格林诺奇 → 但尼丁 → 克伦威尔 → 瓦纳卡 → 普卡基湖 → Twizel → 库克山国家公园 → 特卡波 → 基督城。行程涵盖湖泊与山地风景、快艇、滑翔伞、Skyline、射击体验、冰川直升机徒步、观星和野生动物园。 | **[打开互动地图](https://f-yuan303.github.io/Tourism/)** |
+| 东京五日行程 | 2026 年 10 月 6 日–10 日，共 5 天 | 日本桥 / 人形町为住宿据点，依次游览涩谷、东京迪士尼乐园、银座、镰仓，再从池袋—新宿—原宿购物返程。含两处独立东京塔机位与已指定的预约时段。 | **[打开互动地图](https://f-yuan303.github.io/Tourism/trips/tokyo-2026-10/)** · [查看行程说明](./trips/tokyo-2026-10/plan.md) |
 
 ## 页面功能
 
@@ -33,9 +34,12 @@
 
 ```text
 Tourism/
-├── index.html       # 当前的新西兰南岛互动行程
-├── README.md        # 中文项目说明与网页目录
-└── README_EN.md     # English project guide and page directory
+├── index.html                    # 新西兰南岛互动行程
+├── trips/tokyo-2026-10/
+│   ├── index.html                # 东京五日互动行程
+│   └── plan.md                   # 路线说明与核对事项
+├── README.md                     # 中文项目说明与网页目录
+└── README_EN.md                  # English project guide and page directory
 ```
 
 未来新增行程时，会为每份网页保留独立路径，并同步更新中英文旅行网页目录。
@@ -45,4 +49,3 @@ Tourism/
 - **在线网站：** https://f-yuan303.github.io/Tourism/
 - **GitHub 仓库：** https://github.com/F-Yuan303/Tourism
 - **Trip Map Builder skill：** https://github.com/hiyeshu/trip-map-builder
-

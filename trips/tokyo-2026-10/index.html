@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f5f2eb">
+  <meta name="description" content="2026 年 10 月 6–10 日东京五日旅行计划：涩谷、迪士尼、银座、镰仓与原宿。">
+  <title>东京五日｜旅行地图</title>
+  <link rel="stylesheet" href="../../assets/leaflet.css">
+  <script src="../../assets/leaflet.js" defer></script>
+  <style>
+    :root { --paper:#f5f2eb; --white:#fffefa; --ink:#252b31; --muted:#637078; --line:#dedbd3; --coral:#d97051; --blue:#426f85; --gold:#ad7927; --green:#407561; --shadow:0 10px 30px rgba(39,45,50,.07); }
+    * {box-sizing:border-box} html {scroll-behavior:smooth} body {margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans", "Microsoft YaHei",sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+    a {color:inherit} button {font:inherit} .app {max-width:1520px;margin:auto;display:grid;grid-template-columns:minmax(360px,44%) minmax(0,1fr);min-height:100vh}
+    .left {padding:22px clamp(20px,3vw,48px) 60px;min-width:0} .map-pane {position:sticky;top:0;height:100vh;background:#e4e5db} #map {height:100%;width:100%}
+    .eyebrow {font-size:11px;letter-spacing:.21em;text-transform:uppercase;font-weight:800;color:var(--coral);margin:7px 0 9px}
+    h1 {font-family:Georgia,"Songti SC",serif;letter-spacing:-.04em;font-size:clamp(33px,4vw,54px);line-height:1.08;margin:0 0 8px} .sub {font-size:13px;color:var(--muted);margin:0 0 19px}
+    .topline {display:flex;justify-content:space-between;align-items:start;gap:15px} .stamp {border:1px solid var(--line);padding:7px 10px;border-radius:8px;font-size:11px;color:var(--muted);white-space:nowrap}
+    .summary {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:17px 0 14px}
+    .summary div {background:var(--white);border:1px solid #e9e5dc;border-radius:12px;padding:12px 13px;min-width:0} .summary small {display:block;font-size:11px;color:var(--muted);margin-bottom:3px} .summary strong {font-size:13px;line-height:1.4}
+    .alert {background:#fff4e8;border:1px solid #e8cfad;border-radius:13px;padding:11px 13px;font-size:12px;margin:10px 0;color:#6b4a2d} .alert strong {color:#824722} .alert a {text-underline-offset:2px}
+    .tabs {display:flex;gap:7px;overflow:auto;scrollbar-width:none;padding:12px 0 14px;position:sticky;top:0;background:linear-gradient(var(--paper) 85%,transparent);z-index:20} .tabs::-webkit-scrollbar{display:none}
+    .tab {cursor:pointer;white-space:nowrap;border:1px solid var(--line);background:var(--white);padding:8px 13px;border-radius:999px;font-weight:700;font-size:12px;color:var(--muted)} .tab.active {background:var(--ink);border-color:var(--ink);color:white}
+    .day-head {margin:10px 0 16px} .day-head .dayline {color:var(--coral);font-size:12px;letter-spacing:.06em;font-weight:800} .day-head h2 {font-size:25px;line-height:1.22;letter-spacing:-.03em;margin:5px 0} .day-head p {margin:0;color:var(--muted);font-size:13px}
+    .route {background:#e8ecea;border-radius:12px;padding:11px 13px;font-size:12px;color:#3b5c5a;margin-bottom:14px} .route b{color:#274f4c}
+    .group-title {color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.16em;font-weight:800;margin:22px 0 10px}
+    .timeline {border-left:1px solid #c7c9c3;margin-left:12px;padding-left:17px} .stop {position:relative;background:var(--white);border:1px solid #e6e2d8;box-shadow:var(--shadow);border-radius:14px;padding:14px 15px;margin:0 0 10px} .stop:before {content:"";position:absolute;width:10px;height:10px;border-radius:50%;border:2px solid var(--paper);background:var(--blue);left:-24px;top:20px} .stop.fixed:before{background:var(--coral)} .stop.food:before{background:var(--gold)} .stop.transport:before{background:var(--muted)}
+    .meta {display:flex;align-items:center;gap:7px;font-size:11px;font-weight:800;color:var(--blue)} .meta .pill {padding:2px 7px;border-radius:5px;background:#e8f0f2;color:#3f697b} .meta .pill.fixed {background:#fce9e3;color:#b55237} .meta .pill.optional{background:#eee9de;color:#82622a}
+    .stop h3 {margin:6px 0 4px;font-size:16px;letter-spacing:-.02em} .stop p {margin:0;color:#536069;font-size:12px} .stop .detail {margin-top:8px;color:#69737a;font-size:12px} .links {display:flex;gap:7px;flex-wrap:wrap;margin-top:11px} .links a {font-size:11px;font-weight:800;text-decoration:none;background:#edf2f3;border-radius:7px;color:#426b7c;padding:6px 9px} .links a:first-child {background:var(--blue);color:#fff}
+    .notice {font-size:12px;background:var(--white);border:1px solid var(--line);border-radius:12px;padding:13px 14px;margin:14px 0;color:#59636a} .notice b {color:var(--ink)} .notice a {color:var(--blue)}
+    .mini {font-size:11px;color:var(--muted);margin:16px 0} .list {background:var(--white);border-radius:14px;border:1px solid var(--line);padding:2px 15px;margin-top:12px} .list a {text-decoration:none;color:var(--blue)} .list .row {padding:12px 0;border-bottom:1px solid var(--line);font-size:13px} .list .row:last-child {border-bottom:0} .row small{display:block;color:var(--muted);font-size:11px}
+    .leaflet-container {font-family:inherit;background-color:#e7ece9;background-image:linear-gradient(#d4dfda66 1px,transparent 1px),linear-gradient(90deg,#d4dfda66 1px,transparent 1px);background-size:32px 32px} .leaflet-popup-content {font-size:12px;line-height:1.5} .map-dot {width:25px;height:25px;display:grid;place-items:center;color:white;border:2px solid white;border-radius:50%;box-shadow:0 2px 9px #0004;font-size:11px;font-weight:800}
+    .map-note {position:absolute;right:12px;bottom:30px;z-index:500;background:#fffefaed;border-radius:7px;padding:6px 8px;color:#52636a;font-size:10px;box-shadow:0 2px 7px #0002;pointer-events:none}
+    @media (max-width:800px) { .app{display:flex;flex-direction:column} .map-pane{order:0;position:sticky;top:0;height:31vh;min-height:210px;z-index:10} .left{order:1;padding:18px 18px 45px} .tabs{top:31vh;margin:0 -18px;padding-left:18px;padding-right:18px} h1{font-size:37px} .stamp{display:none} .map-note{bottom:18px} }
+  </style>
+</head>
+<body>
+<main class="app">
+  <section class="left">
+    <div class="topline"><div><div class="eyebrow">TOKYO · 5 DAYS / 4 NIGHTS</div><h1>东京，按天出发。</h1><p class="sub">2026.10.06—10.10 · 所有时刻均为日本当地时间</p></div><span class="stamp">行程参考版 · 2026.09</span></div>
+    <div class="summary">
+      <div><small>住宿区域</small><strong>日本桥 / 人形町<br>具体酒店地址待填</strong></div>
+      <div><small>往返航班</small><strong>10.6 羽田 12:30 落地<br>10.10 羽田 20:00 起飞</strong></div>
+    </div>
+    <div class="alert"><strong>两个时间提醒：</strong>10.6 东京日落约 <b>17:19</b>，17:30 入场的涩谷 Sky 更适合看晚霞余光与夜景；10.10 <b>16:00 最晚离开原宿片区</b>，仍需先回酒店取行李，不能从原宿直接乘京急到机场。<a href="https://eco.mtk.nao.ac.jp/koyomi/dni/2026/s1310.html" target="_blank" rel="noopener">日落来源 ↗</a></div>
+    <nav class="tabs" id="tabs" aria-label="选择日期"></nav>
+    <div id="content"></div>
+    <p class="mini">这是一份参考路线。地图标记与虚线仅用于识别区域，不代表精确门口或列车线路；去店铺请点卡片的「地图搜店」。营业时间、商品库存、预约与当日交通请在出发前再次确认。</p>
+  </section>
+  <section class="map-pane"><div id="map" aria-label="行程互动地图"></div><div class="map-note">示意路线 · 点击卡片可用地图搜店</div></section>
+</main>
+<script>
+const loc=(name,lat,lng,type,time,desc,extra={})=>({name,lat,lng,type,time,desc,...extra});
+const DAYS=[
+ {id:1,short:'10.6',date:'10 月 6 日 · 周二',title:'抵达东京 · 涩谷 Sky',color:'#d97051',route:'羽田 T3 → 日本桥/人形町酒店 → 涩谷 → 银座晚餐 → 酒店',hint:'12:30 抵达后留足入境与取行李时间；16:50 左右抵达涩谷 Scramble Square 14F 入口较稳妥。',stops:[
+  loc('羽田机场 T3',35.5443,139.7675,'transport','12:30','虹桥 08:20 起飞，羽田落地。完成入境与取行李后前往日本桥/人形町。',{query:'Haneda Airport Terminal 3',fixed:true}),
+  loc('日本桥 / 人形町酒店',35.6841,139.7822,'hotel','抵达后','寄存行李、简单午餐；酒店名称与地址尚未提供，地图标记为人形町区域中心。',{query:'Ningyocho Station Tokyo',approx:true}),
+  loc('忠犬八公像 + 涩谷十字路口',35.6591,139.7005,'spot','下午','先在涩谷站前打卡，再步行至 PARCO。',{query:'Hachiko Statue Shibuya'}),
+  loc('涩谷 PARCO',35.6610,139.6984,'spot','下午 · 预留 1.5h','宇田川町 15-1；潮店、6F Nintendo TOKYO 与宝可梦中心。',{detail:'一般物贩 11:00–21:00；6F 10:00–21:00。',query:'Shibuya PARCO 15-1 Udagawacho',official:'https://shibuya.parco.jp/info/'}),
+  loc('SHIBUYA SKY',35.6584,139.7021,'spot','17:30 入场','Shibuya Scramble Square；约 90 分钟。17:19 已日落，可看晚霞余光与夜景，屋顶开放受天气影响。',{query:'SHIBUYA SKY Shibuya Scramble Square',fixed:true,official:'https://www.shibuya-scramble-square.com/sky/'}),
+  loc('银座晚餐 · 二选一',35.6697,139.7642,'food','晚餐','鮨よしかわ / 木曽路银座五丁目，二选一；若尚未订位，请先确定具体店名与时段。',{query:'Ginza 5-chome Tokyo',detail:'鮨よしかわ在银座有不同分店，未给出具体预订分店，不应凭名字直接导航。',options:[['鮨よしかわ（先确认分店）','https://sushi-yoshikawa.jp/'],['木曽路 银座五丁目','https://www.google.com/maps/search/?api=1&query='+encodeURIComponent('木曽路 銀座五丁目店')]]}),
+  loc('返回日本桥 / 人形町',35.6841,139.7822,'hotel','夜间','晚餐后返回酒店休息，为次日迪士尼留体力。',{query:'Ningyocho Station Tokyo',approx:true})
+ ]},
+ {id:2,short:'10.7',date:'10 月 7 日 · 周三',title:'东京迪士尼乐园一整天',color:'#6480a5',route:'日本桥/人形町 → 舞滨站 → 东京迪士尼乐园 → 原路返回',hint:'当日官方运营时间 09:00–21:00；烟花计划 20:30，可能受天气等因素取消。无购物日。',stops:[
+  loc('日本桥 / 人形町出发',35.6841,139.7822,'transport','早上','按酒店位置规划至舞滨站的换乘；预留进园排队时间。',{query:'Ningyocho Station Tokyo',approx:true}),
+  loc('舞滨站',35.6360,139.8844,'transport','上午','下车后步行前往东京迪士尼乐园。',{query:'Maihama Station'}),
+  loc('东京迪士尼乐园',35.6329,139.8804,'spot','全天','提前下载 Tokyo Disney Resort App、绑定门票；入园后按当日需求获取 Standby Pass、Entry Request 或购买 Disney Premier Access。',{query:'Tokyo Disneyland',official:'https://www.tokyodisneyresort.jp/en/tdr/calendar/202610/',detail:'等候卡不是入园前通用预约；不同服务适用项目和规则不同。请以当日 App 为准。'}),
+  loc('迪士尼烟花',35.6329,139.8804,'spot','20:30 · 计划','官方 10.7 烟花计划为 20:30，结束后随人流返回舞滨站。',{query:'Tokyo Disneyland',official:'https://www.tokyodisneyresort.jp/en/tdl/show/schedule/945'}),
+  loc('返回酒店',35.6841,139.7822,'hotel','夜间','步行量大，晚间不再安排购物。',{query:'Ningyocho Station Tokyo',approx:true})
+ ]},
+ {id:3,short:'10.8',date:'10 月 8 日 · 周四',title:'银座购物 · 东京塔第一机位',color:'#ae7b43',route:'日本桥 → 银座购物 → 赤羽桥斑马线 → 20:00 银座三よし → 酒店',hint:'保留你列出的购物清单与顺序；下午要为东京塔往返银座预留交通时间。',stops:[
+  loc('OS Drug 银座店',35.6710,139.7650,'spot','上午','药妆清单：维生素、钙片、铁片、Kitty 指甲刀。',{query:'オーエスドラッグ 銀座店',approx:true}),
+  loc('@cosme STORE ルミネ有乐町',35.6740,139.7620,'spot','上午','对应你写的「Cosme 银座店」：官方店铺列表显示邻近银座的有乐町店；卸妆油、护发素、护发精油、水眉笔。',{query:'@cosme STORE ルミネ有楽町店',approx:true,official:'https://www.cosme.net/store/'}),
+  loc('SR 大楼 8-12-3',35.6678,139.7606,'spot','白天','购物清单：久光贴。原信息未含街区与正式店名，暂按「银座 8-12-3」区域示意，请用你的原始地址核对。',{query:'東京都中央区銀座8-12-3',approx:true}),
+  loc('Donki 银座本馆',35.6688,139.7582,'spot','白天','购买相纸；你提供的 24h 营业信息请临行前核对。',{query:'ドン・キホーテ 銀座本館',approx:true}),
+  loc('MUJI 银座世界旗舰店',35.6715,139.7660,'spot','白天','勺叉四件套、不锈钢盆；你提供的营业时段 11:00–21:00。',{query:'無印良品 銀座',approx:true}),
+  loc('Dover Street Market Ginza',35.6705,139.7667,'spot','下午 · ≥1h','東京都中央区銀座 6-9-5；7 层设计师集合店。你提供的时段 11:00–20:00。',{query:'Dover Street Market Ginza 6-9-5',approx:true}),
+  loc('银座三越 Chanel → 松屋 Chanel',35.6710,139.7658,'spot','下午','保留两个专柜；注意两家距离近，但款式与库存要到店确认。',{query:'銀座三越 シャネル',approx:true}),
+  loc('赤羽桥斑马线 · 东京塔',35.6555,139.7441,'spot','傍晚 · 亮灯后','东京塔机位 ①：赤羽桥站附近斑马线；在合法行人区拍摄，不在车道停留。',{query:'赤羽橋駅 東京タワー 横断歩道',approx:true}),
+  loc('レア天丼 銀座 三よし',35.6707,139.7605,'food','20:00 · 已预约','银座 6-3-15 昭和イーティングビル 1F；提前离开赤羽桥返回银座，避免迟到。',{query:'レア天丼 銀座 三よし 銀座6-3-15',fixed:true,reserve:'https://www.tablecheck.com/ja/rare-ten-mitsuyoshi'}),
+  loc('返回酒店',35.6841,139.7822,'hotel','饭后','返回日本桥 / 人形町。',{query:'Ningyocho Station Tokyo',approx:true})
+ ]},
+ {id:4,short:'10.9',date:'10 月 9 日 · 周五',title:'镰仓一日 · 东京塔第二机位',color:'#5b816d',route:'日本桥 → 东京站 → 镰仓 → 大佛 → 小町通 → 七里滨 → 东京塔 → 酒店',hint:'按你提供的顺序保留大佛、小町通、七里滨；路线会有一次折返，江之岛只作体力足够时的加选。',stops:[
+  loc('东京站 → 镰仓站',35.6812,139.7669,'transport','上午','从日本桥前往东京站，乘 JR 往镰仓；到镰仓后再买江之电一日券。',{query:'Tokyo Station'}),
+  loc('镰仓大佛 · 高德院',35.3167,139.5359,'spot','上午','江之电长谷站下车，参观镰仓大佛。',{query:'Kotoku-in Kamakura Great Buddha'}),
+  loc('小町通',35.3216,139.5510,'spot','午间','返回镰仓站附近逛小町通并午餐；这是按原始顺序的一次折返。',{query:'Komachi-dori Kamakura'}),
+  loc('七里滨 / 镰仓高校前',35.3062,139.5115,'spot','下午','海岸与「灌篮高手」取景点；海边视天气和风浪决定停留时间。',{query:'Kamakurakokomae Station railway crossing',detail:'七里滨与镰仓高校前是相邻但不同的点；卡片地图搜索定位至镰仓高校前道口。拍照时注意道口与居民生活。'}),
+  loc('江之岛（体力可选）',35.2995,139.4808,'spot','可选','体力不足即可舍弃，不影响镰仓主线。',{query:'Enoshima Island',optional:true}),
+  loc('返程至东京 · 芝豆腐 Ukai 斜坡',35.6587,139.7472,'spot','傍晚 / 夜间','东京塔机位 ②：芝とうふ屋うかい附近斜坡。与 10.8 赤羽桥斑马线分开安排。',{query:'芝とうふ屋うかい 東京タワー 坂',approx:true}),
+  loc('返回人形町酒店',35.6841,139.7822,'hotel','夜间','今日不安排繁重购物。',{query:'Ningyocho Station Tokyo',approx:true})
+ ]},
+ {id:5,short:'10.10',date:'10 月 10 日 · 周六',title:'池袋 → 新宿 → 原宿 · 返程',color:'#806688',route:'退房寄存 → 池袋 → 新宿 → 涩谷/原宿 → 酒店取行李 → 羽田 T3',hint:'16:00 是最晚离开原宿片区、开始返程的时刻；最后一天项目很多，店内停留按现场体力压缩，不晚于航班办理手续要求。',stops:[
+  loc('酒店退房 · 寄存行李',35.6841,139.7822,'hotel','上午','酒店位于日本桥 / 人形町；出门前确认行李寄存与取回时间。',{query:'Ningyocho Station Tokyo',approx:true}),
+  loc('池袋东武百货',35.7299,139.7109,'spot','上午','购物：mont-bell、Ralph Lauren；具体楼层与库存当日查看。',{query:'東武百貨店 池袋店'}),
+  loc('新宿 Flags 优衣库',35.6891,139.7019,'spot','午间','定制浴袍、Kitty 短袖（按你的清单：希望在这家买）；限定与库存未获官方确认，现场为准。',{query:'ユニクロ 新宿東南口フラッグス店',official:'https://map.uniqlo.com/jp/ja/detail/10101750'}),
+  loc('KITH Tokyo · 宫下公园',35.6621,139.7019,'spot','下午 ①','神宫前 6-20-10 宫下公园北馆 1–2F；KITH Treats 冰淇淋。你提供的时段 11:00–21:00。',{query:'KITH Tokyo Miyashita Park',approx:true}),
+  loc('GR8 · Laforet 原宿 2.5F',35.6692,139.7051,'spot','下午 ②','你提供的时段 11:00–20:00。',{query:'GR8 Laforet Harajuku 2.5F',approx:true,official:'https://www.laforet.ne.jp/en/shop_search/shop66'}),
+  loc('Kiko Kostadinov Tokyo',35.6732,139.7108,'spot','下午 ③','神宫前 2-32-3；你提供的周六时段 11:00–19:00，请再次核对。',{query:'Kiko Kostadinov Tokyo 2-32-3 Jingumae',approx:true,official:'https://kikokostadinov.com/pages/stores/tokyo'}),
+  loc('表参道 Chanel 精品店',35.6655,139.7113,'spot','下午 ④','沿原宿 / 表参道片区步行逛店。',{query:'CHANEL Omotesando Tokyo',approx:true}),
+  loc('Christopher Nemeth',35.6694,139.7061,'spot','下午 ⑤','具体店铺地址建议临行前用地图核对。',{query:'Christopher Nemeth Tokyo shop',approx:true}),
+  loc('Supreme 原宿店',35.6675,139.7067,'spot','下午 ⑥','购物：帽子；限定与现货以门店为准。',{query:'Supreme Harajuku Tokyo',approx:true}),
+  loc('返回酒店取行李',35.6841,139.7822,'hotel','16:00 起返程','最晚 16:00 离开原宿片区，回日本桥 / 人形町取行李。这里不能直接上京急到羽田。',{query:'Ningyocho Station Tokyo',fixed:true,approx:true}),
+  loc('羽田机场 T3',35.5443,139.7675,'transport','20:00 起飞','从人形町/日本桥可查都营浅草线与京急直通列车至羽田 T3；若所乘列车不直通，按当日换乘提示。以航空公司要求的值机截止时间为准。',{query:'Haneda Airport Terminal 3',fixed:true})
+ ]}
+];
+
+const gmaps=q=>'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q);
+const xhs=q=>'https://www.xiaohongshu.com/search_result?keyword='+encodeURIComponent(q);
+const dp=q=>'https://m.dianping.com/searchshop?keyword='+encodeURIComponent(q);
+const escapeHtml=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const content=document.getElementById('content'),tabs=document.getElementById('tabs');
+let map=null, layers=[], active=0;
+
+function card(s){
+ const q=escapeHtml(s.query||s.name), title=escapeHtml(s.name), type=s.type==='food'?'food':s.type==='transport'?'transport':'';
+ const flags=[s.fixed?'<span class="pill fixed">固定时间</span>':'',s.optional?'<span class="pill optional">可舍弃</span>':''].join('');
+ const links=`<a href="${gmaps(s.query||s.name)}" target="_blank" rel="noopener">地图搜店 ↗</a>${s.official?`<a href="${escapeHtml(s.official)}" target="_blank" rel="noopener">官网 ↗</a>`:''}${s.reserve?`<a href="${escapeHtml(s.reserve)}" target="_blank" rel="noopener">预约 ↗</a>`:''}${s.type==='food'?`<a href="${xhs(s.name+' 东京')}" target="_blank" rel="noopener">小红书搜索</a><a href="${dp(s.name+' 东京')}" target="_blank" rel="noopener">大众点评搜索</a>`:''}`;
+ const options=s.options?`<div class="detail">${s.options.map(([n,u])=>`<a href="${escapeHtml(u)}" target="_blank" rel="noopener">${escapeHtml(n)} ↗</a>`).join('　/　')}</div>`:'';
+ return `<article class="stop ${type} ${s.fixed?'fixed':''}"><div class="meta">${escapeHtml(s.time)} ${flags}</div><h3>${title}</h3><p>${escapeHtml(s.desc)}</p>${s.detail?`<div class="detail">${escapeHtml(s.detail)}</div>`:''}${options}<div class="links">${links}</div></article>`;
+}
+function overview(){
+ return `<div class="day-head"><div class="dayline">TRIP OVERVIEW</div><h2>五天路线，一眼看清</h2><p>预约时段优先，其余都是可灵活调整的参考安排。</p></div>
+ <div class="list">${DAYS.map(d=>`<div class="row"><a href="#day-${d.id}" data-go="${d.id}"><b>${d.short}　${escapeHtml(d.title)} →</b></a><small>${escapeHtml(d.route)}</small></div>`).join('')}</div>
+ <div class="group-title">不可错过的三个时间锚点</div><div class="list"><div class="row"><b>10.6 · 17:30</b>　SHIBUYA SKY 入场<small>东京当日日落约 17:19，不保证看到太阳落下。</small></div><div class="row"><b>10.8 · 20:00</b>　レア天丼 銀座 三よし<small>先拍赤羽桥斑马线，再回银座吃饭。</small></div><div class="row"><b>10.10 · 16:00</b>　最晚开始返程<small>从原宿回酒店取行李，再前往羽田 T3。</small></div></div>
+ <div class="group-title">出行前复核</div><div class="notice"><b>酒店地址：</b>目前只有日本桥 / 人形町区域，导航与取行李时间待酒店名称确认。<br><b>晚餐二选一：</b>鮨よしかわ有多个银座分店；先确定具体店名。<br><b>商品：</b>Kitty、定制浴袍和其他限定商品未确认库存。<br><b>门票：</b>迪士尼入园日期与 Shibuya Sky 17:30 预约凭证请随身保存。</div>
+ <div class="group-title">核对资料</div><div class="notice"><a href="https://eco.mtk.nao.ac.jp/koyomi/dni/2026/s1310.html" target="_blank" rel="noopener">国立天文台 · 东京日落</a> · <a href="https://www.tokyodisneyresort.jp/en/tdr/calendar/202610/" target="_blank" rel="noopener">迪士尼 10 月运营日历</a> · <a href="https://faq-en.tokyodisneyresort.jp/answer/680ba05101fdf7431bafb6b0/" target="_blank" rel="noopener">迪士尼 App 规则</a> · <a href="https://www.enoden.co.jp/en/tourism/ticket/noriorikun/" target="_blank" rel="noopener">江之电一日券</a> · <a href="https://www.keikyu.co.jp/visit/haneda-airport/access/train.html" target="_blank" rel="noopener">京急羽田交通</a></div>`;
+}
+function dayHtml(d){return `<div class="day-head"><div class="dayline">DAY ${d.id} / ${d.date}</div><h2>${escapeHtml(d.title)}</h2><p>${escapeHtml(d.hint)}</p></div><div class="route"><b>路线</b>　${escapeHtml(d.route)}</div><div class="timeline">${d.stops.map(card).join('')}</div>${d.id===4?'<div class="notice">江之电「のりおりくん」成人一日券官网标价 ¥800，仅覆盖江之电全线；东京往返镰仓的 JR 车票不包含在内。<a href="https://www.enoden.co.jp/en/tourism/ticket/noriorikun/" target="_blank" rel="noopener">官方说明 ↗</a></div>':''}`}
+function render(id){active=id;tabs.querySelectorAll('button').forEach(b=>b.classList.toggle('active',Number(b.dataset.id)===id));content.innerHTML=id===0?overview():dayHtml(DAYS[id-1]);content.querySelectorAll('[data-go]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();render(Number(a.dataset.go));window.scrollTo({top:0,behavior:'smooth'})}));drawMap(id)}
+tabs.innerHTML='<button class="tab active" data-id="0">总览</button>'+DAYS.map(d=>`<button class="tab" data-id="${d.id}">D${d.id} · ${d.short}</button>`).join('');
+tabs.addEventListener('click',e=>{const b=e.target.closest('button[data-id]');if(!b)return;render(Number(b.dataset.id));window.scrollTo({top:0,behavior:'smooth'})});
+function drawMap(id){if(!map)return;layers.forEach(l=>map.removeLayer(l));layers=[];const ds=id===0?DAYS:[DAYS[id-1]];let bounds=[];ds.forEach(d=>{let points=[];d.stops.forEach((s,i)=>{if(!s.lat||s.optional)return;const marker=L.marker([s.lat,s.lng],{icon:L.divIcon({className:'',html:`<div class="map-dot" style="background:${d.color}">${id===0?d.id:i+1}</div>`,iconSize:[25,25],iconAnchor:[12,12]})});marker.addTo(map).bindPopup(`<b>${escapeHtml(s.name)}</b><br>${escapeHtml(d.short+' · '+s.time)}${s.approx?'<br>区域示意，按店名搜索导航':''}<br><a href="${gmaps(s.query||s.name)}" target="_blank" rel="noopener">地图搜店 ↗</a>`);layers.push(marker);points.push([s.lat,s.lng]);bounds.push([s.lat,s.lng])});if(id!==0&&points.length>1){const line=L.polyline(points,{color:d.color,weight:2.5,opacity:.55,dashArray:'4,7'}).addTo(map);layers.push(line)}});if(bounds.length)map.fitBounds(bounds,{padding:[24,24],maxZoom:id===0?11:13,animate:false})}
+function initMap(){if(typeof L==='undefined'){document.querySelector('.map-note').textContent='地图资源未加载，行程与导航链接仍可使用';return}map=L.map('map',{zoomControl:false,scrollWheelZoom:false});L.control.zoom({position:'topright'}).addTo(map);let tileErrors=0;const tiles=L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap &copy; CARTO'});tiles.on('tileerror',()=>{if(++tileErrors===3)document.querySelector('.map-note').textContent='底图暂不可用 · 卡片导航链接仍可使用'});tiles.addTo(map);drawMap(active)}
+render(0);window.addEventListener('load',initMap);
+</script>
+</body>
+</html>
