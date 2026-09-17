@@ -39,7 +39,7 @@
   <section class="left">
     <div class="topline"><div><div class="eyebrow">TOKYO · 5 DAYS / 4 NIGHTS</div><h1>东京，按天出发。</h1><p class="sub">2026.10.06—10.10 · 所有时刻均为日本当地时间</p></div><span class="stamp">行程参考版 · 2026.09</span></div>
     <div class="summary">
-      <div><small>住宿区域</small><strong>日本桥 / 人形町<br>具体酒店地址待填</strong></div>
+      <div><small>住宿 · 10.6—10.10</small><strong>相铁 Fresa Inn 日本桥茅场町<br>日本桥茅场町 1-3-10</strong></div>
       <div><small>往返航班</small><strong>10.6 羽田 12:30 落地<br>10.10 羽田 20:00 起飞</strong></div>
     </div>
     <div class="alert"><strong>两个时间提醒：</strong>10.6 东京日落约 <b>17:19</b>，17:30 入场的涩谷 Sky 更适合看晚霞余光与夜景；10.10 <b>16:00 最晚离开原宿片区</b>，仍需先回酒店取行李，不能从原宿直接乘京急到机场。<a href="https://eco.mtk.nao.ac.jp/koyomi/dni/2026/s1310.html" target="_blank" rel="noopener">日落来源 ↗</a></div>
@@ -52,21 +52,21 @@
 <script>
 const loc=(name,lat,lng,type,time,desc,extra={})=>({name,lat,lng,type,time,desc,...extra});
 const DAYS=[
- {id:1,short:'10.6',date:'10 月 6 日 · 周二',title:'抵达东京 · 涩谷 Sky',color:'#d97051',route:'羽田 T3 → 日本桥/人形町酒店 → 涩谷 → 银座晚餐 → 酒店',hint:'12:30 抵达后留足入境与取行李时间；16:50 左右抵达涩谷 Scramble Square 14F 入口较稳妥。',stops:[
-  loc('羽田机场 T3',35.5443,139.7675,'transport','12:30','虹桥 08:20 起飞，羽田落地。完成入境与取行李后前往日本桥/人形町。',{query:'Haneda Airport Terminal 3',fixed:true}),
-  loc('日本桥 / 人形町酒店',35.6841,139.7822,'hotel','抵达后','寄存行李、简单午餐；酒店名称与地址尚未提供，地图标记为人形町区域中心。',{query:'Ningyocho Station Tokyo',approx:true}),
+ {id:1,short:'10.6',date:'10 月 6 日 · 周二',title:'抵达东京 · 涩谷 Sky',color:'#d97051',route:'羽田 T3 → 相铁 Fresa Inn 日本桥茅场町 → 涩谷 → 银座晚餐 → 酒店',hint:'12:30 抵达后留足入境与取行李时间；16:50 左右抵达涩谷 Scramble Square 14F 入口较稳妥。',stops:[
+  loc('羽田机场 T3',35.5443,139.7675,'transport','12:30','虹桥 08:20 起飞，羽田落地。完成入境与取行李后，按当日列车前往日本桥站，再步行至酒店。',{query:'Haneda Airport Terminal 3',fixed:true}),
+  loc('相铁 Fresa Inn 日本桥茅场町',35.680818,139.780054,'hotel','抵达后','〒103-0025 东京都中央区日本桥茅场町 1-3-10。入住前可寄存行李，简单午餐后前往涩谷。日本桥站 D2 出口步行约 5 分钟；茅场町站 7 号出口约 1 分钟。',{query:'相鉄フレッサイン 日本橋茅場町 東京都中央区日本橋茅場町1-3-10',official:'https://sotetsu-hotels.com/fresa-inn/kayabacho/access/'}),
   loc('忠犬八公像 + 涩谷十字路口',35.6591,139.7005,'spot','下午','先在涩谷站前打卡，再步行至 PARCO。',{query:'Hachiko Statue Shibuya'}),
   loc('涩谷 PARCO',35.6610,139.6984,'spot','下午 · 预留 1.5h','宇田川町 15-1；潮店、6F Nintendo TOKYO 与宝可梦中心。',{detail:'一般物贩 11:00–21:00；6F 10:00–21:00。',query:'Shibuya PARCO 15-1 Udagawacho',official:'https://shibuya.parco.jp/info/'}),
   loc('SHIBUYA SKY',35.6584,139.7021,'spot','17:30 入场','Shibuya Scramble Square；约 90 分钟。17:19 已日落，可看晚霞余光与夜景，屋顶开放受天气影响。',{query:'SHIBUYA SKY Shibuya Scramble Square',fixed:true,official:'https://www.shibuya-scramble-square.com/sky/'}),
   loc('银座晚餐 · 二选一',35.6697,139.7642,'food','晚餐','鮨よしかわ / 木曽路银座五丁目，二选一；若尚未订位，请先确定具体店名与时段。',{query:'Ginza 5-chome Tokyo',detail:'鮨よしかわ在银座有不同分店，未给出具体预订分店，不应凭名字直接导航。',options:[['鮨よしかわ（先确认分店）','https://sushi-yoshikawa.jp/'],['木曽路 银座五丁目','https://www.google.com/maps/search/?api=1&query='+encodeURIComponent('木曽路 銀座五丁目店')]]}),
-  loc('返回日本桥 / 人形町',35.6841,139.7822,'hotel','夜间','晚餐后返回酒店休息，为次日迪士尼留体力。',{query:'Ningyocho Station Tokyo',approx:true})
+  loc('返回相铁 Fresa Inn 日本桥茅场町',35.680818,139.780054,'hotel','夜间','晚餐后返回酒店休息，为次日迪士尼留体力。',{query:'相鉄フレッサイン 日本橋茅場町 東京都中央区日本橋茅場町1-3-10'})
  ]},
- {id:2,short:'10.7',date:'10 月 7 日 · 周三',title:'东京迪士尼乐园一整天',color:'#6480a5',route:'日本桥/人形町 → 舞滨站 → 东京迪士尼乐园 → 原路返回',hint:'当日官方运营时间 09:00–21:00；烟花计划 20:30，可能受天气等因素取消。无购物日。',stops:[
-  loc('日本桥 / 人形町出发',35.6841,139.7822,'transport','早上','按酒店位置规划至舞滨站的换乘；预留进园排队时间。',{query:'Ningyocho Station Tokyo',approx:true}),
+ {id:2,short:'10.7',date:'10 月 7 日 · 周三',title:'东京迪士尼乐园一整天',color:'#6480a5',route:'相铁 Fresa Inn 日本桥茅场町 → 舞滨站 → 东京迪士尼乐园 → 原路返回',hint:'当日官方运营时间 09:00–21:00；烟花计划 20:30，可能受天气等因素取消。无购物日。',stops:[
+  loc('酒店出发 · 日本桥茅场町',35.680818,139.780054,'transport','早上','从酒店出发，按当日线路规划至舞滨站的换乘；预留进园排队时间。',{query:'相鉄フレッサイン 日本橋茅場町 東京都中央区日本橋茅場町1-3-10'}),
   loc('舞滨站',35.6360,139.8844,'transport','上午','下车后步行前往东京迪士尼乐园。',{query:'Maihama Station'}),
   loc('东京迪士尼乐园',35.6329,139.8804,'spot','全天','提前下载 Tokyo Disney Resort App、绑定门票；入园后按当日需求获取 Standby Pass、Entry Request 或购买 Disney Premier Access。',{query:'Tokyo Disneyland',official:'https://www.tokyodisneyresort.jp/en/tdr/calendar/202610/',detail:'等候卡不是入园前通用预约；不同服务适用项目和规则不同。请以当日 App 为准。'}),
   loc('迪士尼烟花',35.6329,139.8804,'spot','20:30 · 计划','官方 10.7 烟花计划为 20:30，结束后随人流返回舞滨站。',{query:'Tokyo Disneyland',official:'https://www.tokyodisneyresort.jp/en/tdl/show/schedule/945'}),
-  loc('返回酒店',35.6841,139.7822,'hotel','夜间','步行量大，晚间不再安排购物。',{query:'Ningyocho Station Tokyo',approx:true})
+  loc('返回相铁 Fresa Inn 日本桥茅场町',35.680818,139.780054,'hotel','夜间','步行量大，晚间不再安排购物。',{query:'相鉄フレッサイン 日本橋茅場町 東京都中央区日本橋茅場町1-3-10'})
  ]},
  {id:3,short:'10.8',date:'10 月 8 日 · 周四',title:'银座购物 · 东京塔第一机位',color:'#ae7b43',route:'日本桥 → 银座购物 → 赤羽桥斑马线 → 20:00 银座三よし → 酒店',hint:'保留你列出的购物清单与顺序；下午要为东京塔往返银座预留交通时间。',stops:[
   loc('OS Drug 银座店',35.6710,139.7650,'spot','上午','药妆清单：维生素、钙片、铁片、Kitty 指甲刀。',{query:'オーエスドラッグ 銀座店',approx:true}),
@@ -78,7 +78,7 @@ const DAYS=[
   loc('银座三越 Chanel → 松屋 Chanel',35.6710,139.7658,'spot','下午','保留两个专柜；注意两家距离近，但款式与库存要到店确认。',{query:'銀座三越 シャネル',approx:true}),
   loc('赤羽桥斑马线 · 东京塔',35.6555,139.7441,'spot','傍晚 · 亮灯后','东京塔机位 ①：赤羽桥站附近斑马线；在合法行人区拍摄，不在车道停留。',{query:'赤羽橋駅 東京タワー 横断歩道',approx:true}),
   loc('レア天丼 銀座 三よし',35.6707,139.7605,'food','20:00 · 已预约','银座 6-3-15 昭和イーティングビル 1F；提前离开赤羽桥返回银座，避免迟到。',{query:'レア天丼 銀座 三よし 銀座6-3-15',fixed:true,reserve:'https://www.tablecheck.com/ja/rare-ten-mitsuyoshi'}),
-  loc('返回酒店',35.6841,139.7822,'hotel','饭后','返回日本桥 / 人形町。',{query:'Ningyocho Station Tokyo',approx:true})
+  loc('返回相铁 Fresa Inn 日本桥茅场町',35.680818,139.780054,'hotel','饭后','返回酒店休息。',{query:'相鉄フレッサイン 日本橋茅場町 東京都中央区日本橋茅場町1-3-10'})
  ]},
  {id:4,short:'10.9',date:'10 月 9 日 · 周五',title:'镰仓一日 · 东京塔第二机位',color:'#5b816d',route:'日本桥 → 东京站 → 镰仓 → 大佛 → 小町通 → 七里滨 → 东京塔 → 酒店',hint:'按你提供的顺序保留大佛、小町通、七里滨；路线会有一次折返，江之岛只作体力足够时的加选。',stops:[
   loc('东京站 → 镰仓站',35.6812,139.7669,'transport','上午','从日本桥前往东京站，乘 JR 往镰仓；到镰仓后再买江之电一日券。',{query:'Tokyo Station'}),
@@ -87,10 +87,10 @@ const DAYS=[
   loc('七里滨 / 镰仓高校前',35.3062,139.5115,'spot','下午','海岸与「灌篮高手」取景点；海边视天气和风浪决定停留时间。',{query:'Kamakurakokomae Station railway crossing',detail:'七里滨与镰仓高校前是相邻但不同的点；卡片地图搜索定位至镰仓高校前道口。拍照时注意道口与居民生活。'}),
   loc('江之岛（体力可选）',35.2995,139.4808,'spot','可选','体力不足即可舍弃，不影响镰仓主线。',{query:'Enoshima Island',optional:true}),
   loc('返程至东京 · 芝豆腐 Ukai 斜坡',35.6587,139.7472,'spot','傍晚 / 夜间','东京塔机位 ②：芝とうふ屋うかい附近斜坡。与 10.8 赤羽桥斑马线分开安排。',{query:'芝とうふ屋うかい 東京タワー 坂',approx:true}),
-  loc('返回人形町酒店',35.6841,139.7822,'hotel','夜间','今日不安排繁重购物。',{query:'Ningyocho Station Tokyo',approx:true})
+  loc('返回相铁 Fresa Inn 日本桥茅场町',35.680818,139.780054,'hotel','夜间','今日不安排繁重购物。',{query:'相鉄フレッサイン 日本橋茅場町 東京都中央区日本橋茅場町1-3-10'})
  ]},
  {id:5,short:'10.10',date:'10 月 10 日 · 周六',title:'池袋 → 新宿 → 原宿 · 返程',color:'#806688',route:'退房寄存 → 池袋 → 新宿 → 涩谷/原宿 → 酒店取行李 → 羽田 T3',hint:'16:00 是最晚离开原宿片区、开始返程的时刻；最后一天项目很多，店内停留按现场体力压缩，不晚于航班办理手续要求。',stops:[
-  loc('酒店退房 · 寄存行李',35.6841,139.7822,'hotel','上午','酒店位于日本桥 / 人形町；出门前确认行李寄存与取回时间。',{query:'Ningyocho Station Tokyo',approx:true}),
+  loc('相铁 Fresa Inn 退房 · 寄存行李',35.680818,139.780054,'hotel','上午','酒店地址：日本桥茅场町 1-3-10。退房当天可寄存行李；自助寄存柜按官网规则可使用至当日 22:00。',{query:'相鉄フレッサイン 日本橋茅場町 東京都中央区日本橋茅場町1-3-10',official:'https://sotetsu-hotels.com/fresa-inn/kayabacho/faq/'}),
   loc('池袋东武百货',35.7299,139.7109,'spot','上午','购物：mont-bell、Ralph Lauren；具体楼层与库存当日查看。',{query:'東武百貨店 池袋店'}),
   loc('新宿 Flags 优衣库',35.6891,139.7019,'spot','午间','定制浴袍、Kitty 短袖（按你的清单：希望在这家买）；限定与库存未获官方确认，现场为准。',{query:'ユニクロ 新宿東南口フラッグス店',official:'https://map.uniqlo.com/jp/ja/detail/10101750'}),
   loc('KITH Tokyo · 宫下公园',35.6621,139.7019,'spot','下午 ①','神宫前 6-20-10 宫下公园北馆 1–2F；KITH Treats 冰淇淋。你提供的时段 11:00–21:00。',{query:'KITH Tokyo Miyashita Park',approx:true}),
@@ -99,8 +99,8 @@ const DAYS=[
   loc('表参道 Chanel 精品店',35.6655,139.7113,'spot','下午 ④','沿原宿 / 表参道片区步行逛店。',{query:'CHANEL Omotesando Tokyo',approx:true}),
   loc('Christopher Nemeth',35.6694,139.7061,'spot','下午 ⑤','具体店铺地址建议临行前用地图核对。',{query:'Christopher Nemeth Tokyo shop',approx:true}),
   loc('Supreme 原宿店',35.6675,139.7067,'spot','下午 ⑥','购物：帽子；限定与现货以门店为准。',{query:'Supreme Harajuku Tokyo',approx:true}),
-  loc('返回酒店取行李',35.6841,139.7822,'hotel','16:00 起返程','最晚 16:00 离开原宿片区，回日本桥 / 人形町取行李。这里不能直接上京急到羽田。',{query:'Ningyocho Station Tokyo',fixed:true,approx:true}),
-  loc('羽田机场 T3',35.5443,139.7675,'transport','20:00 起飞','从人形町/日本桥可查都营浅草线与京急直通列车至羽田 T3；若所乘列车不直通，按当日换乘提示。以航空公司要求的值机截止时间为准。',{query:'Haneda Airport Terminal 3',fixed:true})
+  loc('返回相铁 Fresa Inn 取行李',35.680818,139.780054,'hotel','16:00 起返程','最晚 16:00 离开原宿片区，回日本桥茅场町 1-3-10 取行李。随后步行至日本桥站 D2 出口一带乘车前往机场。',{query:'相鉄フレッサイン 日本橋茅場町 東京都中央区日本橋茅場町1-3-10',fixed:true,official:'https://sotetsu-hotels.com/fresa-inn/kayabacho/access/'}),
+  loc('羽田机场 T3',35.5443,139.7675,'transport','20:00 起飞','从日本桥站查询都营浅草线与京急直通列车至羽田 T3；若所乘列车不直通，按当日换乘提示。以航空公司要求的值机截止时间为准。',{query:'Haneda Airport Terminal 3',fixed:true})
  ]}
 ];
 
@@ -122,7 +122,7 @@ function overview(){
  return `<div class="day-head"><div class="dayline">TRIP OVERVIEW</div><h2>五天路线，一眼看清</h2><p>预约时段优先，其余都是可灵活调整的参考安排。</p></div>
  <div class="list">${DAYS.map(d=>`<div class="row"><a href="#day-${d.id}" data-go="${d.id}"><b>${d.short}　${escapeHtml(d.title)} →</b></a><small>${escapeHtml(d.route)}</small></div>`).join('')}</div>
  <div class="group-title">不可错过的三个时间锚点</div><div class="list"><div class="row"><b>10.6 · 17:30</b>　SHIBUYA SKY 入场<small>东京当日日落约 17:19，不保证看到太阳落下。</small></div><div class="row"><b>10.8 · 20:00</b>　レア天丼 銀座 三よし<small>先拍赤羽桥斑马线，再回银座吃饭。</small></div><div class="row"><b>10.10 · 16:00</b>　最晚开始返程<small>从原宿回酒店取行李，再前往羽田 T3。</small></div></div>
- <div class="group-title">出行前复核</div><div class="notice"><b>酒店地址：</b>目前只有日本桥 / 人形町区域，导航与取行李时间待酒店名称确认。<br><b>晚餐二选一：</b>鮨よしかわ有多个银座分店；先确定具体店名。<br><b>商品：</b>Kitty、定制浴袍和其他限定商品未确认库存。<br><b>门票：</b>迪士尼入园日期与 Shibuya Sky 17:30 预约凭证请随身保存。</div>
+ <div class="group-title">出行前复核</div><div class="notice"><b>酒店：</b>相铁 Fresa Inn 日本桥茅场町，〒103-0025 东京都中央区日本桥茅场町 1-3-10。<a href="https://sotetsu-hotels.com/fresa-inn/kayabacho/access/" target="_blank" rel="noopener">酒店官网交通 ↗</a><br><b>机场交通：</b>日本桥站 D2 出口步行约 5 分钟；茅场町站 7 号出口约 1 分钟（无电梯），4a 出口约 2 分钟（有电梯）。<br><b>晚餐二选一：</b>鮨よしかわ有多个银座分店；先确定具体店名。<br><b>商品：</b>Kitty、定制浴袍和其他限定商品未确认库存。<br><b>门票：</b>迪士尼入园日期与 Shibuya Sky 17:30 预约凭证请随身保存。</div>
  <div class="group-title">核对资料</div><div class="notice"><a href="https://eco.mtk.nao.ac.jp/koyomi/dni/2026/s1310.html" target="_blank" rel="noopener">国立天文台 · 东京日落</a> · <a href="https://www.tokyodisneyresort.jp/en/tdr/calendar/202610/" target="_blank" rel="noopener">迪士尼 10 月运营日历</a> · <a href="https://faq-en.tokyodisneyresort.jp/answer/680ba05101fdf7431bafb6b0/" target="_blank" rel="noopener">迪士尼 App 规则</a> · <a href="https://www.enoden.co.jp/en/tourism/ticket/noriorikun/" target="_blank" rel="noopener">江之电一日券</a> · <a href="https://www.keikyu.co.jp/visit/haneda-airport/access/train.html" target="_blank" rel="noopener">京急羽田交通</a></div>`;
 }
 function dayHtml(d){return `<div class="day-head"><div class="dayline">DAY ${d.id} / ${d.date}</div><h2>${escapeHtml(d.title)}</h2><p>${escapeHtml(d.hint)}</p></div><div class="route"><b>路线</b>　${escapeHtml(d.route)}</div><div class="timeline">${d.stops.map(card).join('')}</div>${d.id===4?'<div class="notice">江之电「のりおりくん」成人一日券官网标价 ¥800，仅覆盖江之电全线；东京往返镰仓的 JR 车票不包含在内。<a href="https://www.enoden.co.jp/en/tourism/ticket/noriorikun/" target="_blank" rel="noopener">官方说明 ↗</a></div>':''}`}

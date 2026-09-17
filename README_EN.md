@@ -15,7 +15,7 @@ A GitHub Pages collection for interactive trip maps. Each itinerary is published
 | Trip | Dates | Destinations and Route | Page |
 |---|---|---|---|
 | New Zealand South Island | Nov 27–Dec 5 · 9 days | Queenstown → Glenorchy → Dunedin → Cromwell → Wānaka → Lake Pūkaki → Twizel → Aoraki / Mount Cook National Park → Lake Tekapo → Christchurch. Highlights include alpine and lake scenery, jet boating, paragliding, Skyline Queenstown, a shooting experience, a glacier heli-hike, stargazing, and a wildlife park. | **[Open interactive map](https://f-yuan303.github.io/Tourism/)** |
-| Tokyo in five days | Oct 6–10, 2026 · 5 days | Based in Nihonbashi / Ningyōchō: Shibuya, Tokyo Disneyland, Ginza, Kamakura, then Ikebukuro–Shinjuku–Harajuku before departure. Includes two separate Tokyo Tower photo locations and reserved time slots. | **[Open interactive map](https://f-yuan303.github.io/Tourism/trips/tokyo-2026-10/)** · [Trip notes (Chinese)](./trips/tokyo-2026-10/plan.md) |
+| Tokyo in five days | Oct 6–10, 2026 · 5 days | Based at Sotetsu Fresa Inn Nihombashi-Kayabacho: Shibuya, Tokyo Disneyland, Ginza, Kamakura, then Ikebukuro–Shinjuku–Harajuku before departure. Includes two separate Tokyo Tower photo locations and reserved time slots. | **[Open interactive map](https://f-yuan303.github.io/Tourism/trips/tokyo-2026-10/)** · [Trip notes (Chinese)](./trips/tokyo-2026-10/plan.md) |
 
 ## Features
 
